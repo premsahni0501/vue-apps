@@ -1,11 +1,13 @@
 {
-  "name": "hello-world",
+  "name": "vue-apps",
   "version": "0.1.0",
+  "homepage": "https://premsahni0501.github.io/vue-apps/",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@types/unsplash-js": "^5.0.0",
@@ -20,6 +22,7 @@
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-typescript": "^3.8.0",
     "@vue/cli-service": "^3.8.0",
+    "gh-pages": "^2.0.1",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
     "typescript": "^3.4.3",
