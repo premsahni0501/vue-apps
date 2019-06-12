@@ -42,6 +42,7 @@ export default class TodoItem extends Vue {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  color: #222;
 
   .form-group {
     width: 2rem;

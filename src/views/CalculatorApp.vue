@@ -83,10 +83,15 @@ export default class CalculatorApp extends Vue{
     performOperation(input: CalcButtonProps){
         switch(input.name){
             case "percentage": 
-            if(this.currentOperator == "divide"){
+            if(this.currentOperator == "divide" || this.currentOperator == "multiply"){
                 let nextOperand: number = parseInt(this.currentOperand);
                 this.operands.push(nextOperand);
-                nextOperand = this.calculate(this.operands, 'percentage');
+                if(this.currentOperator == "divide"){
+                    nextOperand = this.calculate(this.operands, 'percentageBy');
+                }
+                else if(this.currentOperator == "multiply"){
+                    nextOperand = this.calculate(this.operands, 'percentageOf');
+                }
                 this.result = nextOperand+"";
                 this.operands = [];
                 this.operands.push(nextOperand);
@@ -135,7 +140,8 @@ export default class CalculatorApp extends Vue{
             case "subtract": return values[0] - values[1];
             case "multiply": return values[0] * values[1];
             case "divide": return values[0] / values[1];
-            case "percentage": return (values[0] / values[1]) * 100;
+            case "percentageBy": return (values[0] / values[1]) * 100;
+            case "percentageOf": return (values[0] * values[1]) / 100;
             case "equal": console.log(values[0], values[1], operator); break;
         }
         return 0;

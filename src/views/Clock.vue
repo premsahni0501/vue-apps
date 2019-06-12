@@ -12,6 +12,9 @@
             <div class="hoursHand" v-bind:style="{transform:`rotate(${hoursHand}deg)`}"></div>
             <div class="handsBase"></div>
         </div>
+        <h1 class="text-center date-text">
+            <span>{{nowHrs}}:{{nowMins}}:{{nowSec}}</span>
+        </h1>
     </div>
 </template>
 <script lang="ts">
@@ -23,6 +26,11 @@ export default class extends Vue{
     secHand: number = 0;
     minHand: number = 0;
     hrHand: number = 0;
+
+    nowSeconds: string = '';
+    nowMinutes: string = '';
+    nowHours: string = '';
+
     get secondsHand():number{
         return this.secHand;
     }
@@ -41,6 +49,15 @@ export default class extends Vue{
     set hoursHand(hr: number){
         this.hrHand = hr;
     }
+    get nowHrs():string{
+        return this.nowHours;
+    }
+    get nowMins():string{
+        return this.nowMinutes;
+    }
+    get nowSec():string{
+        return this.nowSeconds;
+    }
     created(){
         this.setTime();
     }
@@ -49,10 +66,20 @@ export default class extends Vue{
     }
     setTime(){
         const now: Date = new Date();
-        this.secondsHand = (now.getSeconds() / 60 * 360) - 90;
-        this.minutesHand = (now.getMinutes() / 60 * 360) - 90;
-        this.hoursHand = (now.getHours() / 12 * 360) - 90;
-        console.log(this.secHand, now.getHours(), now.getMinutes(), now.getSeconds());
+
+        this.nowHours = now.getHours()+'';
+        this.nowMinutes = now.getMinutes()+'';
+        this.nowSeconds = now.getSeconds()+'';
+
+        this.secondsHand = (parseInt(this.nowSeconds) / 60 * 360) - 90;
+        this.minutesHand = (parseInt(this.nowMinutes) / 60 * 360) - 90;
+        this.hoursHand = (parseInt(this.nowHours) / 12 * 360) - 90;
+
+        this.nowHours = (this.nowHours.toString().length == 1)?`0${this.nowHours}`:this.nowHours;
+        this.nowMinutes = (this.nowMinutes.toString().length == 1)?`0${this.nowMinutes}`:this.nowMinutes;
+        this.nowSeconds = (this.nowSeconds.toString().length == 1)?`0${this.nowSeconds}`:this.nowSeconds;
+
+        console.log(this.secHand, this.nowHours, this.nowMinutes, this.nowSeconds);
     }
     beforeDestroy(){
         clearInterval(this.interval);
@@ -108,6 +135,16 @@ export default class extends Vue{
         width: 35%;
         // top: calc(50% - 4px);
         // left: calc(50% - 4px);
+    }
+}
+.date-text{
+    span{
+        padding: 1rem;
+        display: inline-block;
+        background: #fff;
+        border-radius: 0.5rem;
+        color: #222;
+        font-family: monospace;
     }
 }
 </style>
