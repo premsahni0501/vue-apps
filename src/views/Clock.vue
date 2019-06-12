@@ -51,7 +51,7 @@ export default class extends Vue{
         const now: Date = new Date();
         this.secondsHand = (now.getSeconds() / 60 * 360) - 90;
         this.minutesHand = (now.getMinutes() / 60 * 360) - 90;
-        this.hoursHand = (now.getHours() / 24 * 360) - 180;
+        this.hoursHand = (now.getHours() / 12 * 360) - 90;
         console.log(this.secHand, now.getHours(), now.getMinutes(), now.getSeconds());
     }
     beforeDestroy(){

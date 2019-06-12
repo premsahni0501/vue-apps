@@ -1,7 +1,7 @@
 {
   "name": "vue-apps",
   "version": "0.1.0",
-  "homepage": "https://premsahni0501.github.io/vue-apps/",
+  "homepage": "https://premsahni0501.github.io/vue-apps",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
