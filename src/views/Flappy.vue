@@ -53,6 +53,8 @@ export default class TodoApp extends Vue {
     {x: 0, y: 0}
   ];
 
+  private gravityMultiplier: number = 0.03;
+
   created(){
     this.gameInterval = setInterval(()=>this.update(), 1000/this.fps);
   }
@@ -60,7 +62,7 @@ export default class TodoApp extends Vue {
     if(this.gameOver){
       return;
     }
-
+    this.birdGravity += this.gravityMultiplier;
     this.bgPosition -= this.birdVelocity/5;
     this.birdPosition.y += this.birdGravity;
     if(this.birdPosition.y > window.innerHeight || this.birdPosition.y < 0){
@@ -84,6 +86,8 @@ export default class TodoApp extends Vue {
   private restartGame(){
     this.birdPosition.y = window.innerHeight/2;
     this.gameOver = false;
+    this.gravityMultiplier = 0.3;
+    this.birdGravity = 9;
   }
 }
 </script>
@@ -99,6 +103,12 @@ export default class TodoApp extends Vue {
   z-index: 10;
   background: url('../assets/img/bg.jpg') repeat-x center center/cover;
   transition: background-position-x 0.5s linear;
+  *{
+    cursor: url('../assets/icon/hand.png'), auto;
+  }
+  *:active{
+    cursor: url('../assets/icon/hand_active.png'), auto;
+  }
   .container{
     position: absolute;
     left: 0;
