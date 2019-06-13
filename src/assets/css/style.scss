@@ -5,24 +5,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   width: 100%;
   height: 100vh;
   position: fixed;
   overflow-y: auto;
-  background: center center /cover;
-  color: #fff;
-}
-#app::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(64, 64, 64, 0.5);
-  z-index: -1;
+  color: #222;
+  background-color: #fff;
 }
 #nav {
   padding: 30px;

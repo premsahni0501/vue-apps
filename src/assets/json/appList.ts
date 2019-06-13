@@ -1,17 +1,22 @@
 export const appDataList = [
     {
         "name": "TodoApp",
-        "icon": "notepad.svg",
+        "icon": "todo.png",
         "link": "todo-app"
     },
     {
         "name": "Calculator",
-        "icon": "calculator.svg",
+        "icon": "calculator.png",
         "link": "calculator-app"
     },
     {
         "name": "Clock",
-        "icon": "clock.svg",
+        "icon": "clock.png",
         "link": "clock"
+    },
+    {
+        "name": "Flappy",
+        "icon": "flappy.jpg",
+        "link": "flappy"
     }
 ]

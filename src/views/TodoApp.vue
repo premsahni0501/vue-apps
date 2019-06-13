@@ -1,11 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="actionbar">
-      <button class="btn btn-link" v-on:click="goBack">
-        <img src="../assets/icon/left-arrow.svg" alt="back" class="img-fluid">
-      </button>
-      <h3 class="m-0">Todo List</h3>
-    </div>
+    <ActionBar v-bind:title="'Todos'"/>
     <div class="container mt-3 home" style="max-width: 500px;">
       <AddTodo v-on:addTodo="addTodo" v-on:markCompleted="markCompleted"/>
       <Todos v-bind:todos="todoListItems" v-on:removeTodo="removeTodo"/>
@@ -17,13 +12,15 @@
 import { Component, Vue } from "vue-property-decorator";
 import Todos from "../components/TodoApp/Todos.vue";
 import AddTodo from "../components/TodoApp/AddTodo.vue";
+import ActionBar from '../components/ActionBar.vue';
 
 import { Todo } from "../interface/Todo";
 
 @Component({
   components: {
     Todos,
-    AddTodo
+    AddTodo,
+    ActionBar
   }
 })
 export default class TodoApp extends Vue {
@@ -57,11 +54,6 @@ export default class TodoApp extends Vue {
       }
     });
     this.todoListItems = list;
-  }
-  private goBack() {
-    window.history.length > 1
-      ? this.$router.back()
-      : this.$router.push({ path: '/'});
   }
 }
 </script>

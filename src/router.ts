@@ -32,6 +32,11 @@ export default new Router({
       component: () => import('./views/Clock.vue'),
     },
     {
+      path: '/flappy',
+      name: 'Flappy',
+      component: () => import('./views/Flappy.vue'),
+    },
+    {
       path: '*',
       name: '404 Not Found',
       component: () => import('./views/404.vue'),

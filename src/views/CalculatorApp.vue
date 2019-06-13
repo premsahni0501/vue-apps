@@ -1,11 +1,6 @@
 <template>
     <div class="container-fluid">
-        <div class="actionbar">
-            <button class="btn btn-link" v-on:click="back">
-                <img src="../assets/icon/left-arrow.svg" alt="back" class="img-fluid">
-            </button>
-            <h3 class="m-0">Calculator</h3>
-        </div>
+        <ActionBar v-bind:title="'Calculator'"/>
         <div class="container mt-3 home" style="max-width: 500px;">
             <div class="calculatorBase">
                 <div class="form-group">
@@ -50,8 +45,11 @@ import { Vue, Component } from 'vue-property-decorator';
 import { buttons } from '../assets/json/calculatorButtons';
 import { CalcButtonTypes } from '../interface/CalcButtonTypes';
 import { CalcButtonProps } from '../interface/CalcButtonProps';
+import ActionBar from '../components/ActionBar.vue';
 
-@Component
+@Component({
+    components: {ActionBar}
+})
 export default class CalculatorApp extends Vue{
     calcButtons: CalcButtonTypes = {
         operation: [],
@@ -68,9 +66,6 @@ export default class CalculatorApp extends Vue{
         this.calcButtons.operator = buttons.filter((button: CalcButtonProps)=>button.type === "operator");
         this.calcButtons.operand = buttons.filter((button: CalcButtonProps)=>button.type === "operand");
         this.calcButtons.operand = this.calcButtons.operand.reverse();
-    }
-    back(){
-        window.history.length>1?this.$router.back():this.$router.push({path: "/"});
     }
     onInput(input: CalcButtonProps){
         console.log(input.title);

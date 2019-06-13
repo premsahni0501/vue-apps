@@ -1,11 +1,6 @@
 <template>
     <div class="container-fluid">
-        <div class="actionbar">
-            <button class="btn btn-link" v-on:click="back">
-                <img src="../assets/icon/left-arrow.svg" alt="back" class="img-fluid">
-            </button>
-            <h3 class="m-0">Calculator</h3>
-        </div>
+        <ActionBar v-bind:title="'Clock'"/>
         <div class="clockBase">
             <div class="secondsHand" v-bind:style="{transform:`rotate(${secondsHand}deg)`}"></div>
             <div class="minutesHand" v-bind:style="{transform:`rotate(${minutesHand}deg)`}"></div>
@@ -19,8 +14,11 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import ActionBar from '../components/ActionBar.vue';
 
-@Component
+@Component({
+    components: {ActionBar}
+})
 export default class extends Vue{
     interval: number = 0;
     secHand: number = 0;
@@ -83,9 +81,6 @@ export default class extends Vue{
     }
     beforeDestroy(){
         clearInterval(this.interval);
-    }
-    back(){
-        window.history.length>1?this.$router.back():this.$router.push({path: "/"});
     }
 }
 </script>

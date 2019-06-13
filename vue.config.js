@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: '/vue-apps'
+    publicPath: process.env == 'production'?'/vue-apps':'.'
 }
