@@ -64,7 +64,6 @@ export interface AppDetails {
 }
 .list-item {
   display: inline-block;
-  margin-right: 10px;
   margin-bottom: 10px;
 }
 .list-enter-active,

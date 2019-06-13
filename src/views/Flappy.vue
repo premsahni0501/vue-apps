@@ -9,9 +9,9 @@
         v-bind:pos="birdPosition" 
         v-bind:fps="fps"
         v-bind:gameOver="gameOver"/>
-      <template v-for="(pipe, index) in pipesArray">
+      <!-- <template v-for="(pipe, index) in pipesArray">
         <div class="pipe" v-bind:style="{left: pipe.x, top: pipe.y}" v-bind:key="`pipe_${index}`"></div>
-      </template>
+      </template> -->
     </div>
     <div class="prompt fixed-top" v-if="gameOver" style="max-width: 500px;">
       <h1>{{msg}}</h1>
